@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Global Cleantech Innovation Program</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Open Sans', sans-serif;
+      background-color: #f5f7fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      scroll-behavior: smooth;
+    }
+    .gcip-banner {
+      display: flex;
+      background: linear-gradient(135deg, #00a86b 60%, transparent 40%);
+      color: white;
+      padding: 1rem 1.5rem 0.5rem;
+      border-radius: 0 0 80px 80px;
+      position: relative;
+      z-index: 10;
+      flex-wrap: wrap;
+      overflow: hidden; 
+      height: 220px;
+    }
+
+    .gcip-banner-text {
+      flex: 1 1 60%;
+      padding-right: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .gcip-banner-media {
+      position: absolute;
+      right: 0;
+      top: 0;
+      height: 100%;
+      width: 40%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .gcip-banner-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      margin-top: 0;
+    }
+
+    .white-badge {
+      background: white;
+      color: #00a86b;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-weight: bold;
+      display: inline-block;
+      margin-top: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      z-index: 3;
+    }
+
+    .left-badge {
+      position: absolute;
+      left: 20px;
+      bottom: 20px;
+    }
+
+    .right-badge {
+      position: absolute;
+      right: 20px;
+      bottom: -10px;
+    }
+
+    .blue-arch-banner {
+      background: #0056b3;
+      border-top-left-radius: 80px;
+      border-top-right-radius: 80px;
+      margin-top: -10px;
+      padding-top: 60px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .gcip-banner img {
+      border-radius: 12px;
+    }
+
+    .gcip-banner-text {
+      background: linear-gradient(135deg, #00a86b 60%, transparent 40%);
+      flex: 1;
+      padding: 1rem 1rem;
+    }
+    
+    .gcip-banner-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .mihub-logo {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 100px;
+      z-index: 10;
+    }
+    .section-title {
+      margin-top: 2rem;
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #0a3d62;
+      position: relative;
+      padding-bottom: 10px;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #00a86b, #0056b3);
+      border-radius: 2px;
+    }
+    .gcip-box {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .gcip-box:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+    }
+    .qr-code {
+      max-width: 180px;
+      display: block;
+      margin: 0 auto;
+    }
+    .contact-info p {
+      margin: 0.3rem 0;
+    }
+    .partner-logos {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+      padding: 20px 0;
+    }
+    .partner-logos img {
+      max-height: 80px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+    .partner-logos img:hover {
+      transform: scale(1.05);
+    }
+    
+    /* New styles for Apply section */
+    .apply-section {
+      background: linear-gradient(135deg, #0056b3 0%, #00a86b 100%);
+      color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .apply-section:before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+      z-index: 1;
+    }
+    .apply-btn {
+      background: white;
+      color: #0056b3;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      border-radius: 50px;
+      font-weight: bold;
+      margin: 1rem 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      position: relative;
+      z-index: 2;
+    }
+    .apply-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    }
+    
+    /* Success Stories section */
+    .success-stories {
+      margin: 3rem 0;
+    }
+    .story-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin-bottom: 2rem;
+      transition: transform 0.3s ease;
+    }
+    .story-card:hover {
+      transform: translateY(-5px);
+    }
+    .story-img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .story-card:hover .story-img {
+      transform: scale(1.03);
+    }
+    .story-content {
+      padding: 1.5rem;
+    }
+    .story-title {
+      color: #0a3d62;
+      margin-bottom: 1rem;
+    }
+    .story-meta {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+    .story-highlight {
+      background: #f0f8ff;
+      padding: 1rem;
+      border-radius: 8px;
+      margin: 1rem 0;
+      border-left: 4px solid #0056b3;
+    }
+    
+    /* Call for Proposals Section */
+    .call-for-applications {
+      position: relative;
+      overflow: hidden;
+      background: url('https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+      background-attachment: fixed;
+      padding: 5rem 0;
+      color: white;
+    }
+    .call-for-applications:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,86,179,0.85);
+      z-index: 0;
+    }
+    .call-for-applications .container {
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Eligible Solutions Section */
+    .eligible-solutions {
+      
+      padding: 3rem 0;
+    }
+    .eligible-solutions .gcip-box {
+      background: linear-gradient(135deg, #f5f7fa 0%, white 100%);
+      border-left: 5px solid #00a86b;
+    }
+    .eligible-solutions ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .eligible-solutions li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 30px;
+    }
+    .eligible-solutions li:before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: #00a86b;
+      font-weight: bold;
+    }
+    
+    /* Pre-Acceleration Section */
+    .pre-acceleration {
+      background: #f9f9f9;
+      padding: 3rem 0;
+    }
+    .pre-acceleration .gcip-box {
+      background: linear-gradient(135deg, white 0%, #f5f7fa 100%);
+      border-left: 5px solid #0056b3;
+    }
+    .pre-acceleration ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .pre-acceleration li {
+      padding: 8px 0;
+      position: relative;
+      padding-left: 30px;
+    }
+    .pre-acceleration li:before {
+      content: '➤';
+      position: absolute;
+      left: 0;
+      color: #0056b3;
+    }
+    
+    /* Section transitions */
+    .section {
+      padding: 4rem 0;
+      position: relative;
+    }
+    .section-parallax {
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    
+    /* Animation classes */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+    }
+    .slide-up {
+      transform: translateY(50px);
+      opacity: 0;
+      transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+    }
+    .slide-up.visible {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .gcip-banner {
+        height: auto;
+        background: #00a86b;
+      }
+      .gcip-banner-media {
+        position: relative;
+        width: 100%;
+        height: 200px;
+      }
+      .call-for-applications {
+        background-attachment: scroll;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="gcip-banner position-relative d-flex flex-wrap">
+    <div class="gcip-banner-text">
+      <div class="d-flex align-items-center mb-3">
+        <img src="assets/img/Picture1.png" alt="MiHub Logo" style="max-height: 80px; margin-right: 20px; border-radius: 12px;">
+        <div>
+          <h1 class="mb-1" style="font-size: 2rem; font-weight: bold;">Mafikeng Innovation Hub CleanTech Programme</h1>
+        </div>
+      </div>
+      <div class="d-flex align-items-center">
+        <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Location Pin" style="width: 15px; height: 15px; margin-right: 10px;">
+        <p class="mb-0" style="font-size: 0.9rem;"><strong>2696 James Watt Crescent, Mahikeng Industrial, 2745</strong></p>
+      </div>
+    </div>
+    
+    <div class="gcip-banner-media">
+      <video autoplay muted loop playsinline>
+        <source src="images/turbines.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    
+    <!-- White badge on left -->
+    <div class="white-badge left-badge">
+      PRE-ACCELERATION PROGRAM
+    </div>
+    
+    <!-- White badge on right -->
+    <div class="white-badge right-badge">
+     
+    </div>
+  </div>
+
+  <!-- Arch Blue Banner -->
+  <div class="blue-arch-banner text-white text-center py-4" data-aos="fade-down">
+    <h1 class="mb-2">Global Cleantech Innovation Program</h1>
+    <p class="lead">For cleantech entrepreneurs & innovators</p>
+    <p><b><i> <h6><i> NORTH-WEST PROVINCE NODE</i></h6></i></b></p>
+  </div>
+
+<!-- Call for Applications Section -->
+<section class="call-for-applications text-center py-5 section-parallax">
+  <div class="container" data-aos="zoom-in">
+    <!-- Main Title -->
+    <h1 class="display-4 font-weight-bold mb-4">CALL FOR PROPOSALS</h1>
+    
+    <!-- Subtitle -->
+    <h2 class="h4 font-weight-light mb-5 text-uppercase" style="letter-spacing: 1px;">
+      ADVANCING CLEANTECH INNOVATION AND ENTREPRENEURSHIP FOR CLIMATE ACTION AND SUSTAINABLE DEVELOPMENT IN SOUTH AFRICA.
+    </h2>
+    
+    <!-- Content Box -->
+    <div class="bg-light p-4 p-md-5 rounded-lg mx-auto" style="max-width: 800px; background-color: rgba(255,255,255,0.9) !important;">
+      <p class="lead mb-4" style="color: #000; font-weight: bold;">
+        MiHub is proud to be a partner in the GCIP 2.0 Hubs and Spokes Initiative
+      </p>
+      
+      <p class="text-muted mb-4">
+        Under the GCIP 2.0 Hubs and Spokes initiative, the Accelerator is being delivered in collaboration with nine cleantech implementing partners across South Africa. These partners include leading innovation hubs, universities, and business incubators that provide tailored acceleration support, expert mentorship, and access to valuable networks and funding opportunities.
+      </p>
+      
+      <p class="text-muted">
+        MiHub is honoured to be one of this year's implementing partners, contributing to the advancement of clean technology innovation and entrepreneurship in South Africa.
+      </p>
+    </div>
+  </div>
+</section>
+
+  <!-- Main Content -->
+  <div class="container my-4">
+
+        <!-- Eligible Solutions Section -->
+    <section class="eligible-solutions" data-aos="fade-up">
+      <div class="row align-items-center">
+        <div class="col-md-6">
+          <div class="gcip-box" style="height: 100%;">
+            <h2 class="section-title">Eligible Solutions</h2>
+            <p>Solutions should fall within the following sub-disciplines but are not limited to:</p>
+            <ul>
+              <li>Renewable energy</li>
+              <li>Energy efficiency</li>
+              <li>Water efficiency</li>
+              <li>Waste beneficiation</li>
+              <li>Green buildings</li>
+              <li>E-mobility/transportation</li>
+              <li>Advanced Eco materials & chemicals</li>
+              <li>Climate-smart Agritech, among others</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <img src="https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+               alt="Renewable Energy" 
+               class="img-fluid rounded" 
+               style="height: 100%; width: 100%; object-fit: cover;">
+        </div>
+      </div>
+    </section>
+
+    <!-- Pre-Acceleration Section -->
+    <section class="pre-acceleration" data-aos="fade-up" data-aos-delay="100">
+      <div class="row align-items-center">
+        <div class="col-md-6 order-md-2">
+          <div class="gcip-box" style="height: 100%;">
+            <h2 class="section-title">Pre-Acceleration Objectives</h2>
+            <ul>
+              <li>Increased participation of under-represented groups.</li>
+              <li>Support the development of new cleantech solutions.</li>
+              <li>Assist entrepreneurs in addressing key transitory gaps.</li>
+              <li>Provide support to a larger more diverse group of entrepreneurs.</li>
+            </ul>
+          </div>
+        </div>
+       <div class="col-md-6 order-md-1">
+  <video src="images/electricity.mp4" 
+         alt="Team Collaboration" 
+         class="img-fluid rounded" 
+         style="height: 100%; width: 100%; object-fit: cover;"
+         autoplay loop muted playsinline>
+  </video>
+</div>
+
+      </div>
+    </section>
+
+    <!-- Apply Section -->
+    <div class="apply-section" data-aos="zoom-in">
+      <h2>Ready to Transform Your Cleantech Idea into Reality?</h2>
+      <p>Join our pre-acceleration program and get the support you need to develop your sustainable solution.</p>
+      <p><strong>Applications close: June 16, 2025</strong></p>
+      
+      <div class="row align-items-center justify-content-center">
+        <div class="col-md-8">
+          <p>• Open to all people in the North West province with preference given to women, youth, persons with disabilities and black entrepreneurs</p>
+          <p>• Applications must be submitted online</p>
+         <a href="https://docs.google.com/forms/d/e/1FAIpQLScyMHUFXgmYzAbzymdpGQDJS88DVIcuCfnYOrcZJlRMzQkDoA/viewform
+         " target="https://docs.google.com/forms/d/e/1FAIpQLScyMHUFXgmYzAbzymdpGQDJS88DVIcuCfnYOrcZJlRMzQkDoA/viewform" class="apply-btn" style="text-decoration: none;">CLICK HERE TO APPLY</a>
+        </div>
+        <div class="col-md-4">
+          <h4>Scan to Apply</h4>
+          <img src="images/GCIP-QR CODE.png" alt="QR Code" class="img-fluid qr-code">
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Stories Section -->
+    <div class="success-stories" data-aos="fade-up">
+      <h2 class="section-title text-center">Success Stories</h2>
+      <p class="text-center mb-4">Discover how our program participants are making an impact with their cleantech innovations</p>
+      
+      <div class="row">
+        <!-- Mega G Technologies -->
+        <div class="col-md-6">
+          <div class="story-card">
+            <img src="images/Mega G.jpeg" alt="CleanTech Generator" class="story-img">
+            <div class="story-content">
+              <h3 class="story-title">Mega G Technologies</h3>
+              <p class="story-meta">Cleantech Generator Manufacturing</p>
+              <p>Mega G Technologies developed an innovative cleantech generator that converts mechanical energy into electricity with 150% greater efficiency than conventional models while producing zero emissions.</p>
+              <div class="story-highlight">
+                Mpho Moloko has developed a 3D-printed renewable energy generator aimed at helping solve South Africa's energy crisis.
+The generator, which does not use fossil fuels, is designed for homes, businesses, and public facilities like hospitals. Moloko, who studied mechanical and electrical engineering at Taletso TVET College, built the prototype in 2021 with support from the Mafikeng Digital Innovation Hub. He gained his 3D printing skills through ALISON, an online learning platform.
+ Although still a prototype, the generator delivers over 150% efficiency and could power electric vehicles. Moloko hopes to become an Independent Power Producer to offer affordable electricity to underserved communities and reduce load-shedding in the next decade.
+                
+              </div>
+              <p>Their solution addresses both energy poverty and climate change, particularly benefiting rural communities with limited grid access.</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Mathabi's Project -->
+        <div class="col-md-6">
+          <div class="story-card">
+            <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" alt="Noise to Energy Project" class="story-img">
+            <div class="story-content">
+              <h3 class="story-title">Mathabi's Noise to Energy Project</h3>
+              <p class="story-meta">Urban Energy Harvesting</p>
+              <p>Mathabi, a young innovator from Mahikeng, created a system that converts noise pollution from busy roads and industrial areas into usable electrical energy.</p>
+              <div class="story-highlight">
+                "Through GCIP's mentorship, we improved our prototype's efficiency by 65% and secured our first municipal pilot project." - Mathabi, Founder
+              </div>
+              <p>The technology has potential applications in urban areas across South Africa, turning environmental noise pollution into a valuable energy resource while reducing its health impacts.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="gcip-box contact-info" data-aos="fade-up">
+      <h2>For Enquiries Contact</h2>
+      <p><strong>Phone:</strong> (087) 153 2141 / (078) 590 1615</p>
+      <p><strong>Email:</strong> info@mafihub.co.za | bmolefhe@mafihub.co.za | nchirwa@mafihub.co.za</p>
+    </div>
+
+    <!-- Partner Logos -->
+    <div class="partner-logos" data-aos="zoom-in">
+      <h2 class="w-100 text-center">Partners</h2>
+      <img src="images/GCIP.png" alt="GCIP">
+      <img src="images/UNIDO.png" alt="UNIDO">
+      <img src="images/SCIENCE.png" alt="DSI">
+      <img src="images/MDiHub.png" alt="MiHub">
+      <img src="images/TIA.gif" alt="TIA">
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    // Initialize AOS (Animate On Scroll)
+    AOS.init({
+      duration: 800,
+      easing: 'ease-in-out',
+      once: true,
+      offset: 100
+    });
+    
+    // Simple scroll animation for sections
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('.section, .eligible-solutions, .pre-acceleration');
+      
+      function checkScroll() {
+        sections.forEach(section => {
+          const sectionTop = section.getBoundingClientRect().top;
+          const windowHeight = window.innerHeight;
+          
+          if (sectionTop < windowHeight * 0.75) {
+            section.classList.add('visible');
+          }
+        });
+      }
+      
+      // Check on load
+      checkScroll();
+      
+      // Check on scroll
+      window.addEventListener('scroll', checkScroll);
+    });
+  </script>
+</body>
+</html>
