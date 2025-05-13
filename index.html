@@ -56,6 +56,27 @@
       margin-top: 0;
     }
 
+
+    @media (max-width: 768px) {
+  .gcip-banner {
+    flex-wrap: nowrap; /* prevent stacking */
+    height: auto;
+  }
+  .gcip-banner-text,
+  .gcip-banner-media {
+    flex: 1 1 50%; /* each takes up half */
+    min-width: 0;
+  }
+  .gcip-banner-media {
+    position: relative;
+    height: 100%;
+  }
+  .gcip-banner-media video {
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
     .white-badge {
       background: white;
       color: #00a86b;
