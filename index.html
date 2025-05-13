@@ -56,27 +56,7 @@
       margin-top: 0;
     }
 
-
-    @media (max-width: 768px) {
-  .gcip-banner {
-    flex-wrap: nowrap; /* prevent stacking */
-    height: auto;
-  }
-  .gcip-banner-text,
-  .gcip-banner-media {
-    flex: 1 1 50%; /* each takes up half */
-    min-width: 0;
-  }
-  .gcip-banner-media {
-    position: relative;
-    height: 100%;
-  }
-  .gcip-banner-media video {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
+    
     .white-badge {
       background: white;
       color: #00a86b;
@@ -296,58 +276,88 @@
       z-index: 1;
     }
     
-    /* Eligible Solutions Section */
-    .eligible-solutions {
-      
-      padding: 3rem 0;
-    }
-    .eligible-solutions .gcip-box {
-      background: linear-gradient(135deg, #ffffff 0%, white 100%);
-      box-shadow: black;
-      border-left: 5px solid #00a86b;
-    }
-    .eligible-solutions ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .eligible-solutions li {
-      padding: 8px 0;
-      position: relative;
-      padding-left: 30px;
-    }
-    .eligible-solutions li:before {
-      content: '✓';
-      position: absolute;
-      left: 0;
-      color: #00a86b;
-      font-weight: bold;
-    }
-    
-    /* Pre-Acceleration Section */
-    .pre-acceleration {
-      background: #ffffff;
-      padding: 3rem 0;
-    }
-    .pre-acceleration .gcip-box {
-      background: linear-gradient(135deg, white 0%, #ffffff 100%);
-      border-left: 5px solid #0056b3;
-    }
-    .pre-acceleration ul {
-      list-style: none;
-      padding-left: 0;
-    }
-    .pre-acceleration li {
-      padding: 8px 0;
-      position: relative;
-      padding-left: 30px;
-    }
-    .pre-acceleration li:before {
-      content: '➤';
-      position: absolute;
-      left: 0;
-      color: #0056b3;
-    }
-    
+   /* Eligible Solutions Section - Updated */
+.eligible-solutions {
+  padding: 3rem 0;
+  margin-bottom: 4rem;
+}
+
+.eligible-solutions .gcip-box {
+  display: flex;
+  flex-direction: row;
+  min-height: 400px;
+  background: linear-gradient(135deg, #ffffff 0%, white 100%);
+  border-left: 5px solid #00a86b;
+  overflow: hidden; /* Contain the content */
+}
+
+.eligible-solutions .gcip-box > .content-text {
+  flex: 1 1 50%;
+  padding: 2rem;
+}
+
+.eligible-solutions .gcip-box > .media-content {
+  flex: 1 1 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Pre-Acceleration Section - Updated */
+.pre-acceleration {
+  padding: 3rem 0;
+  margin-bottom: 4rem;
+}
+
+.pre-acceleration .gcip-box {
+  display: flex;
+  flex-direction: row;
+  min-height: 400px;
+  background: linear-gradient(135deg, white 0%, #ffffff 100%);
+  border-left: 5px solid #0056b3;
+  overflow: hidden; /* Contain the content */
+}
+
+.pre-acceleration .gcip-box > .content-text {
+  flex: 1 1 50%;
+  padding: 2rem;
+}
+
+.pre-acceleration .gcip-box > .media-content {
+  flex: 1 1 50%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  /* Eligible Solutions Mobile */
+  .eligible-solutions .gcip-box,
+  .pre-acceleration .gcip-box {
+    flex-direction: column;
+    min-height: auto;
+  }
+  
+  .eligible-solutions .gcip-box > .content-text,
+  .pre-acceleration .gcip-box > .content-text {
+    flex: 1 1 100%;
+    padding: 1.5rem;
+    order: 1;
+  }
+  
+  .eligible-solutions .gcip-box > .media-content,
+  .pre-acceleration .gcip-box > .media-content {
+    flex: 1 1 100%;
+    height: 250px;
+    order: 2;
+  }
+  
+  /* Ensure other sections maintain full width */
+  .container > .row > [class^="col-"] {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+}
     /* Section transitions */
     .section {
       padding: 4rem 0;
@@ -391,6 +401,44 @@
       }
       .call-for-applications {
         background-attachment: scroll;
+      }
+      
+      /* Fix for eligible and pre-acceleration sections on mobile */
+      .eligible-solutions .gcip-box,
+      .pre-acceleration .gcip-box {
+        flex-direction: column !important;
+        min-height: auto !important;
+      }
+      
+      .eligible-solutions .gcip-box > div,
+      .pre-acceleration .gcip-box > div {
+        flex: 1 1 100% !important;
+      }
+      
+      .eligible-solutions .gcip-box > div:first-child,
+      .pre-acceleration .gcip-box > div:first-child {
+        order: 1;
+        padding: 1.5rem !important;
+      }
+      
+      .eligible-solutions .gcip-box > div:last-child,
+      .pre-acceleration .gcip-box > div:last-child {
+        order: 2;
+        height: 250px !important;
+      }
+      
+      /* Fix for apply section on mobile */
+      .apply-section .row {
+        flex-direction: column;
+      }
+      
+      .apply-section .col-md-8 {
+        order: 1;
+        margin-bottom: 1.5rem;
+      }
+      
+      .apply-section .col-md-4 {
+        order: 2;
       }
     }
   </style>
@@ -470,13 +518,13 @@
     <p><b><i> <h6><i> NORTH-WEST PROVINCE NODE</i></h6></i></b></p>
   </div>
 
-        <!-- Eligible Solutions Section -->
-<section class="eligible-solutions" data-aos="fade-up" style="margin-bottom: 4rem; padding: 0;">
-  <div class="row g-0 align-items-stretch" style="height: 100%;">
+<!-- Eligible Solutions Section -->
+<section class="eligible-solutions" data-aos="fade-up">
+  <div class="row g-0">
     <div class="col-md-12">
-      <div class="gcip-box" style="display: flex; flex-direction: row; flex-wrap: wrap; min-height: 400px; height: 100%;">
+      <div class="gcip-box">
         <!-- Text -->
-        <div style="flex: 1 1 50%; padding: 2rem;">
+        <div class="content-text">
           <h2 class="section-title">Eligible Solutions</h2>
           <p>Solutions should fall within the following sub-disciplines but are not limited to:</p>
           <ul>
@@ -491,12 +539,8 @@
           </ul>
         </div>
         <!-- Video -->
-        <div style="flex: 1 1 50%; height: 100%; overflow: hidden;">
-          <video src="images/electricity.mp4"
-                 class="img-fluid"
-                 autoplay loop muted playsinline
-                 style="width: 100%; height: 100%; object-fit: cover; display: block;">
-          </video>
+         <div class="media-content">
+          <video src="images/electricity.mp4" class="img-fluid" autoplay loop muted playsinline></video>
         </div>
       </div>
     </div>
@@ -504,18 +548,16 @@
 </section>
 
 <!-- Pre-Acceleration Section -->
-<section class="pre-acceleration" data-aos="fade-up" data-aos-delay="100" style="margin-bottom: 4rem; padding: 0;">
-  <div class="row g-0 align-items-stretch" style="height: 100%;">
+<section class="pre-acceleration" data-aos="fade-up" data-aos-delay="100">
+  <div class="row g-0">
     <div class="col-md-12">
-      <div class="gcip-box" style="display: flex; flex-direction: row; flex-wrap: wrap; min-height: 400px; height: 100%;">
+      <div class="gcip-box">
         <!-- Image -->
-        <div style="flex: 1 1 50%; height: 100%; overflow: hidden;">
-          <img src="images/emobility.jpg"
-               class="img-fluid"
-               style="width: 100%; height: 100%; object-fit: cover; display: block;">
+        <div class="media-content">
+          <img src="images/emobility.jpg" class="img-fluid">
         </div>
         <!-- Text -->
-        <div style="flex: 1 1 50%; padding: 2rem;">
+        <div class="content-text">
           <h2 class="section-title">Pre-Acceleration Objectives</h2>
           <ul>
             <li>Increased participation of under-represented groups.</li>
@@ -523,7 +565,7 @@
             <li>Assist entrepreneurs in addressing key transitory gaps.</li>
             <li>Provide support to a larger more diverse group of entrepreneurs.</li>
           </ul>
-        </div>
+       </div>
       </div>
     </div>
   </div>
